@@ -43,7 +43,7 @@ export function HeroSection() {
 
         {/* Main heading */}
         <h1
-          className={`text-7xl md:text-8xl lg:text-9xl mb-6 leading-[0.95] tracking-tight text-[var(--color-text-primary)] ${
+          className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl mb-6 leading-[0.95] tracking-tight text-[var(--color-text-primary)] ${
             mounted ? 'animate-fade-in-up stagger-1' : 'opacity-0'
           }`}
         >
@@ -54,7 +54,7 @@ export function HeroSection() {
 
         {/* Subheading */}
         <p
-          className={`text-xl md:text-2xl text-[var(--color-text-secondary)] max-w-3xl mx-auto mb-12 leading-relaxed ${
+          className={`text-base sm:text-lg md:text-xl lg:text-2xl text-[var(--color-text-secondary)] max-w-3xl mx-auto mb-12 leading-relaxed px-4 ${
             mounted ? 'animate-fade-in-up stagger-2' : 'opacity-0'
           }`}
         >
@@ -81,7 +81,7 @@ export function HeroSection() {
 
         {/* Stats */}
         <div
-          className={`mt-24 grid grid-cols-3 gap-12 max-w-3xl mx-auto ${
+          className={`mt-16 sm:mt-20 md:mt-24 grid grid-cols-3 gap-6 sm:gap-8 md:gap-12 max-w-3xl mx-auto px-4 ${
             mounted ? 'animate-fade-in-up stagger-4' : 'opacity-0'
           }`}
         >
@@ -91,10 +91,10 @@ export function HeroSection() {
             { value: '50B+', label: 'API Calls' },
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <div className="text-4xl md:text-5xl font-instrument mb-2 gradient-text font-semibold">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-instrument mb-1 sm:mb-2 gradient-text font-semibold">
                 {stat.value}
               </div>
-              <div className="text-sm text-[var(--color-text-secondary)] font-mono uppercase tracking-wider">
+              <div className="text-xs sm:text-sm text-[var(--color-text-secondary)] font-mono uppercase tracking-wider">
                 {stat.label}
               </div>
             </div>

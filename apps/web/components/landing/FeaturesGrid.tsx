@@ -59,46 +59,46 @@ const features = [
 
 export function FeaturesGrid() {
   return (
-    <section id="features" className="relative py-32 px-6 bg-[var(--color-bg-secondary)]/30">
+    <section id="features" className="relative py-20 sm:py-24 md:py-32 px-6 bg-[var(--color-bg-secondary)]/30">
       {/* Decorative elements */}
       <div className="absolute top-20 right-1/4 w-px h-64 bg-gradient-to-b from-transparent via-[var(--color-border)] to-transparent" />
       <div className="absolute bottom-20 left-1/3 w-px h-48 bg-gradient-to-b from-transparent via-[var(--color-border)] to-transparent" />
 
       <div className="max-w-[1280px] mx-auto">
         {/* Section header */}
-        <div className="mb-20 text-center">
-          <div className="inline-block px-4 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-secondary)] mb-6">
-            <span className="text-sm font-mono text-[var(--color-text-secondary)] font-medium">FEATURES</span>
+        <div className="mb-12 sm:mb-16 md:mb-20 text-center">
+          <div className="inline-block px-4 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-secondary)] mb-4 sm:mb-6">
+            <span className="text-xs sm:text-sm font-mono text-[var(--color-text-secondary)] font-medium">FEATURES</span>
           </div>
-          <h2 className="text-5xl md:text-7xl mb-6 text-[var(--color-text-primary)]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-4 sm:mb-6 text-[var(--color-text-primary)]">
             Built for
             <br />
             <span className="gradient-text">Performance</span>
           </h2>
-          <p className="text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto leading-relaxed px-4">
             Everything you need to build, deploy, and scale AI applications in production.
           </p>
         </div>
 
         {/* Features grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--color-border)] border border-[var(--color-border)] rounded-2xl overflow-hidden">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--color-border)] border border-[var(--color-border)] rounded-2xl overflow-hidden">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group relative p-8 bg-[var(--color-bg-primary)] hover:bg-[var(--color-bg-secondary)] transition-all duration-500"
+              className="group relative p-6 sm:p-8 bg-[var(--color-bg-primary)] hover:bg-[var(--color-bg-secondary)] transition-all duration-500"
             >
               {/* Icon with gradient on hover */}
-              <div className="mb-6 text-[var(--color-text-secondary)] group-hover:text-[#FF6B35] transition-colors duration-500">
+              <div className="mb-4 sm:mb-6 text-[var(--color-text-secondary)] group-hover:text-[#FF6B35] transition-colors duration-500">
                 {feature.icon}
               </div>
 
               {/* Title */}
-              <h3 className="text-xl font-instrument mb-3 text-[var(--color-text-primary)] group-hover:gradient-text transition-all duration-300">
+              <h3 className="text-lg sm:text-xl font-instrument mb-2 sm:mb-3 text-[var(--color-text-primary)] group-hover:gradient-text transition-all duration-300">
                 {feature.title}
               </h3>
 
               {/* Description */}
-              <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
+              <p className="text-[var(--color-text-secondary)] text-xs sm:text-sm leading-relaxed">
                 {feature.description}
               </p>
 
@@ -109,7 +109,7 @@ export function FeaturesGrid() {
         </div>
 
         {/* Bottom stats */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 p-8 border border-[var(--color-border)] rounded-2xl bg-[var(--color-bg-secondary)] backdrop-blur-sm">
+        <div className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 p-6 sm:p-8 border border-[var(--color-border)] rounded-2xl bg-[var(--color-bg-secondary)] backdrop-blur-sm">
           {[
             { label: 'Countries', value: '150+' },
             { label: 'Developers', value: '1M+' },
@@ -117,10 +117,10 @@ export function FeaturesGrid() {
             { label: 'Avg Response', value: '87ms' },
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <div className="text-3xl font-instrument mb-1 gradient-text font-semibold">
+              <div className="text-2xl sm:text-3xl font-instrument mb-1 gradient-text font-semibold">
                 {stat.value}
               </div>
-              <div className="text-xs text-[var(--color-text-secondary)] font-mono uppercase tracking-wider">
+              <div className="text-[10px] sm:text-xs text-[var(--color-text-secondary)] font-mono uppercase tracking-wider">
                 {stat.label}
               </div>
             </div>

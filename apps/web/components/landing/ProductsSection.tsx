@@ -57,29 +57,29 @@ export function ProductsSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="products" className="relative py-32 px-6">
+    <section id="products" className="relative py-20 sm:py-24 md:py-32 px-6">
       <div className="max-w-[1280px] mx-auto">
         {/* Section header */}
-        <div className="mb-20">
-          <div className="inline-block px-4 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-secondary)] mb-6">
-            <span className="text-sm font-mono text-[var(--color-text-secondary)] font-medium">PRODUCTS</span>
+        <div className="mb-12 sm:mb-16 md:mb-20">
+          <div className="inline-block px-4 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-secondary)] mb-4 sm:mb-6">
+            <span className="text-xs sm:text-sm font-mono text-[var(--color-text-secondary)] font-medium">PRODUCTS</span>
           </div>
-          <h2 className="text-5xl md:text-7xl mb-6 max-w-3xl text-[var(--color-text-primary)]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-4 sm:mb-6 max-w-3xl text-[var(--color-text-primary)]">
             Tools for the
             <br />
             <span className="gradient-text">Next Generation</span>
           </h2>
-          <p className="text-xl text-[var(--color-text-secondary)] max-w-2xl leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-[var(--color-text-secondary)] max-w-2xl leading-relaxed">
             Production-ready AI products designed to integrate seamlessly into your workflow.
           </p>
         </div>
 
         {/* Product cards grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {products.map((product, index) => (
             <div
               key={index}
-              className="group relative p-8 border border-[var(--color-border)] rounded-2xl bg-[var(--color-bg-secondary)] backdrop-blur-sm hover:border-[var(--color-border-light)] transition-all duration-500 overflow-hidden"
+              className="group relative p-6 sm:p-8 border border-[var(--color-border)] rounded-2xl bg-[var(--color-bg-secondary)] backdrop-blur-sm hover:border-[var(--color-border-light)] transition-all duration-500 overflow-hidden"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -93,18 +93,18 @@ export function ProductsSection() {
 
               <div className="relative">
                 {/* Icon */}
-                <div className="text-6xl mb-6 transition-transform duration-500 group-hover:scale-110">
+                <div className="text-4xl sm:text-5xl md:text-6xl mb-4 sm:mb-6 transition-transform duration-500 group-hover:scale-110">
                   {product.icon}
                 </div>
 
                 {/* Product name */}
-                <h3 className="text-3xl font-instrument mb-2 transition-colors duration-300 text-[var(--color-text-primary)]">
+                <h3 className="text-2xl sm:text-3xl font-instrument mb-2 transition-colors duration-300 text-[var(--color-text-primary)]">
                   {product.name}
                 </h3>
 
                 {/* Tagline */}
                 <div
-                  className="text-sm font-mono mb-4 transition-colors duration-300 font-medium"
+                  className="text-xs sm:text-sm font-mono mb-3 sm:mb-4 transition-colors duration-300 font-medium"
                   style={{
                     color: hoveredIndex === index ? product.accent : 'var(--color-text-secondary)'
                   }}
@@ -113,16 +113,16 @@ export function ProductsSection() {
                 </div>
 
                 {/* Description */}
-                <p className="text-[var(--color-text-secondary)] mb-6 leading-relaxed text-[15px]">
+                <p className="text-[var(--color-text-secondary)] mb-4 sm:mb-6 leading-relaxed text-sm sm:text-[15px]">
                   {product.description}
                 </p>
 
                 {/* Features */}
-                <ul className="space-y-2 mb-8">
+                <ul className="space-y-2 mb-6 sm:mb-8">
                   {product.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-[var(--color-text-secondary)]">
+                    <li key={i} className="flex items-center gap-2 text-xs sm:text-sm text-[var(--color-text-secondary)]">
                       <div
-                        className="w-1.5 h-1.5 rounded-full transition-colors duration-300"
+                        className="w-1.5 h-1.5 rounded-full transition-colors duration-300 flex-shrink-0"
                         style={{
                           backgroundColor: hoveredIndex === index ? product.accent : 'var(--color-border-light)'
                         }}
@@ -134,7 +134,7 @@ export function ProductsSection() {
 
                 {/* CTA */}
                 <button
-                  className="group/btn flex items-center gap-2 text-sm font-medium text-[var(--color-text-primary)] hover:gap-3 transition-all"
+                  className="group/btn flex items-center gap-2 text-xs sm:text-sm font-medium text-[var(--color-text-primary)] hover:gap-3 transition-all"
                   style={{
                     color: hoveredIndex === index ? product.accent : 'var(--color-text-primary)'
                   }}
@@ -148,11 +148,11 @@ export function ProductsSection() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-[var(--color-text-secondary)] mb-4 text-lg">
+        <div className="mt-12 sm:mt-16 text-center">
+          <p className="text-[var(--color-text-secondary)] mb-4 text-base sm:text-lg">
             Need a custom solution?
           </p>
-          <button className="px-8 py-3 border border-[var(--color-border-light)] rounded-full text-sm font-medium text-[var(--color-text-primary)] hover:border-[var(--color-text-primary)] hover:bg-[var(--color-bg-secondary)] transition-all hover:scale-105">
+          <button className="px-6 sm:px-8 py-2.5 sm:py-3 border border-[var(--color-border-light)] rounded-full text-xs sm:text-sm font-medium text-[var(--color-text-primary)] hover:border-[var(--color-text-primary)] hover:bg-[var(--color-bg-secondary)] transition-all hover:scale-105">
             Contact Enterprise Sales
           </button>
         </div>
