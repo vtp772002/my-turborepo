@@ -4,7 +4,7 @@ import { useState, useRef, useCallback, useEffect } from "react";
 
 type Phase = "idle" | "scanning" | "translated";
 
-const SCAN_DURATION = 1800;
+const SCAN_DURATION = 5200;
 const FADE_DURATION = 400;
 const TRANSLATED_BADGE_DURATION = 1800;
 
@@ -20,7 +20,7 @@ export function PhoneMockup() {
   const timerRef   = useRef<ReturnType<typeof setTimeout> | null>(null);
   const translatedBadgeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const resetMockup = useCallback((behavior: ScrollBehavior = "smooth") => {
+  const resetMockup = useCallback((behavior: ScrollBehavior = "smooth", preserveScroll = false) => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
     if (timerRef.current) clearTimeout(timerRef.current);
     if (translatedBadgeTimerRef.current) clearTimeout(translatedBadgeTimerRef.current);
@@ -28,6 +28,15 @@ export function PhoneMockup() {
     setScanProgress(0);
     setFadeIn(false);
     setShowTranslatedBadge(false);
+    if (preserveScroll) {
+      const el = scrollRef.current;
+      if (el) {
+        const p = el.scrollTop / (el.scrollHeight - el.clientHeight);
+        setScrollProgress(Math.min(1, Math.max(0, p)));
+      }
+      return;
+    }
+
     setScrollProgress(0);
     scrollRef.current?.scrollTo({ top: 0, behavior });
   }, []);
@@ -83,7 +92,7 @@ export function PhoneMockup() {
       if (timerRef.current) clearTimeout(timerRef.current);
       setFadeIn(false);
       timerRef.current = setTimeout(() => {
-        resetMockup("smooth");
+        resetMockup("smooth", true);
       }, FADE_DURATION);
       return;
     }
@@ -92,10 +101,10 @@ export function PhoneMockup() {
     setPhase("scanning");
     setScanProgress(0);
     setFadeIn(false);
-    const startTime = Date.now();
+    const startTime = performance.now();
 
-    const scanFrame = () => {
-      const elapsed = Date.now() - startTime;
+    const scanFrame = (now: number) => {
+      const elapsed = now - startTime;
       const progress = Math.min(100, (elapsed / SCAN_DURATION) * 100);
       setScanProgress(progress);
       if (progress < 100) {
@@ -107,7 +116,8 @@ export function PhoneMockup() {
         }, 150);
       }
     };
-    rafRef.current = requestAnimationFrame(scanFrame);
+
+    scanFrame(startTime);
   }, [phase, resetMockup]);
 
   return (
@@ -141,11 +151,11 @@ export function PhoneMockup() {
                   className="w-full select-none block"
                   draggable={false}
                   style={{
-                    position: showTranslated ? "absolute" : "relative",
+                    position: "relative",
                     top: 0, left: 0, width: "100%",
                     opacity: fadeIn ? 0 : 1,
                     transition: `opacity ${FADE_DURATION}ms ease`,
-                    zIndex: showTranslated ? 1 : "auto",
+                    zIndex: 1,
                   }}
                 />
 
@@ -157,47 +167,55 @@ export function PhoneMockup() {
                   className="w-full select-none block"
                   draggable={false}
                   style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "fill",
+                    zIndex: 2,
                     display: showTranslated ? "block" : "none",
                     opacity: fadeIn ? 1 : 0,
                     transition: `opacity ${FADE_DURATION}ms ease`,
                   }}
                 />
 
-                {/* SCAN LINE */}
-                {isScanning && (
-                  <div
-                    className="absolute left-0 right-0 pointer-events-none z-10"
-                    style={{ top: `${scanProgress}%` }}
-                  >
-                    <div
-                      className="w-full h-[3px]"
-                      style={{
-                        background: "linear-gradient(90deg, transparent 0%, #00DFFF 20%, #fff 50%, #00DFFF 80%, transparent 100%)",
-                        boxShadow: "0 0 12px 6px rgba(0,223,255,0.5), 0 0 40px 10px rgba(0,223,255,0.2)",
-                      }}
-                    />
-                    <div
-                      className="w-full pointer-events-none"
-                      style={{ height: "30px", background: "linear-gradient(to bottom, rgba(0,223,255,0.08), transparent)" }}
-                    />
-                  </div>
-                )}
-
-                {/* AI grid mesh */}
-                {isScanning && (
-                  <div
-                    className="absolute inset-0 pointer-events-none z-[5]"
-                    style={{
-                      backgroundImage: `
-                        linear-gradient(rgba(0,223,255,0.04) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(0,223,255,0.04) 1px, transparent 1px)
-                      `,
-                      backgroundSize: "20px 20px",
-                    }}
-                  />
-                )}
               </div>
             </div>
+
+            {/* SCAN LINE (viewport-based) */}
+            {isScanning && (
+              <div
+                className="absolute left-0 right-0 pointer-events-none z-10"
+                style={{ top: `${scanProgress}%` }}
+              >
+                <div
+                  className="w-full h-[3px]"
+                  style={{
+                    background: "linear-gradient(90deg, transparent 0%, #00DFFF 20%, #fff 50%, #00DFFF 80%, transparent 100%)",
+                    boxShadow: "0 0 12px 6px rgba(0,223,255,0.5), 0 0 40px 10px rgba(0,223,255,0.2)",
+                  }}
+                />
+                <div
+                  className="w-full pointer-events-none"
+                  style={{ height: "30px", background: "linear-gradient(to bottom, rgba(0,223,255,0.08), transparent)" }}
+                />
+              </div>
+            )}
+
+            {/* AI grid mesh (viewport-based) */}
+            {isScanning && (
+              <div
+                className="absolute inset-0 pointer-events-none z-[5]"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(rgba(0,223,255,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,223,255,0.04) 1px, transparent 1px)
+                  `,
+                  backgroundSize: "20px 20px",
+                }}
+              />
+            )}
 
             {/* SCROLL BAR */}
             <div className="absolute top-12 right-[2px] bottom-12 w-[3px] z-20 pointer-events-none">
@@ -281,17 +299,25 @@ export function PhoneMockup() {
       </div>
 
       {/* Floating language badges */}
-      <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-[#FF6B35] to-[#A78BFA] rounded-2xl flex items-center justify-center shadow-xl animate-bounce" style={{ animationDuration: "3s" }}>
-        <span className="text-2xl">🇯🇵</span>
+      <div className="absolute top-5 right-0 sm:top-4 translate-x-[calc(100%+10px)] sm:translate-x-[calc(100%+12px)] z-50">
+        <div className="w-11 h-11 sm:w-[64px] sm:h-[64px] bg-gradient-to-br from-[#FF6B35] to-[#A78BFA] rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl overflow-hidden animate-bounce" style={{ animationDuration: "3s" }}>
+          <span className="inline-flex items-center justify-center w-full h-full leading-none text-lg sm:text-2xl">🇯🇵</span>
+        </div>
       </div>
-      <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-[#60A5FA] to-[#34D399] rounded-2xl flex items-center justify-center shadow-xl animate-bounce" style={{ animationDuration: "2.5s", animationDelay: "0.5s" }}>
-        <span className="text-xl">🇺🇸</span>
+      <div className="absolute bottom-8 left-0 sm:bottom-6 -translate-x-[calc(100%+10px)] sm:-translate-x-[calc(100%+12px)] z-50">
+        <div className="w-10 h-10 sm:w-[54px] sm:h-[54px] bg-gradient-to-br from-[#60A5FA] to-[#34D399] rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl overflow-hidden animate-bounce" style={{ animationDuration: "2.5s", animationDelay: "0.5s" }}>
+          <span className="inline-flex items-center justify-center w-full h-full leading-none text-sm sm:text-lg">🇺🇸</span>
+        </div>
       </div>
-      <div className="absolute top-1/4 -left-8 w-14 h-14 bg-gradient-to-br from-[#A78BFA] to-[#F472B6] rounded-xl flex items-center justify-center shadow-xl animate-bounce" style={{ animationDuration: "2.8s", animationDelay: "1s" }}>
-        <span className="text-lg">🇰🇷</span>
+      <div className="absolute top-[34%] left-0 sm:top-[31%] -translate-x-[calc(100%+10px)] sm:-translate-x-[calc(100%+12px)] z-50">
+        <div className="w-9 h-9 sm:w-[46px] sm:h-[46px] bg-gradient-to-br from-[#A78BFA] to-[#F472B6] rounded-lg sm:rounded-xl flex items-center justify-center shadow-xl overflow-hidden animate-bounce" style={{ animationDuration: "2.8s", animationDelay: "1s" }}>
+          <span className="inline-flex items-center justify-center w-full h-full leading-none text-xs sm:text-base">🇰🇷</span>
+        </div>
       </div>
-      <div className="absolute top-1/2 -right-7 w-12 h-12 bg-gradient-to-br from-[#34D399] to-[#60A5FA] rounded-xl flex items-center justify-center shadow-xl animate-bounce" style={{ animationDuration: "2.6s", animationDelay: "0.8s" }}>
-        <span className="text-base">🇻🇳</span>
+      <div className="absolute top-[58%] right-0 sm:top-[56%] translate-x-[calc(100%+10px)] sm:translate-x-[calc(100%+12px)] z-50">
+        <div className="w-8 h-8 sm:w-[40px] sm:h-[40px] bg-gradient-to-br from-[#34D399] to-[#60A5FA] rounded-lg sm:rounded-xl flex items-center justify-center shadow-xl overflow-hidden animate-bounce" style={{ animationDuration: "2.6s", animationDelay: "0.8s" }}>
+          <span className="inline-flex items-center justify-center w-full h-full leading-none text-[10px] sm:text-sm">🇻🇳</span>
+        </div>
       </div>
 
     </div>
