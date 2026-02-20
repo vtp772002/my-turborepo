@@ -1,65 +1,140 @@
-'use client';
+"use client";
 
 const features = [
   {
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M13 10V3L4 14h7v7l9-11h-7z"
+        />
       </svg>
     ),
-    title: 'Lightning Fast',
-    description: 'Sub-100ms response times with global edge deployment and intelligent caching.',
+    title: "Real-time Translation",
+    description:
+      "Instant screen translation with minimal latency. See translations as fast as you can capture.",
   },
   {
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
+        />
       </svg>
     ),
-    title: 'Enterprise Security',
-    description: 'SOC 2 Type II certified with end-to-end encryption and zero-knowledge architecture.',
+    title: "100+ Languages",
+    description:
+      "Support for over 100 languages including Japanese, Korean, Chinese, Arabic, and more.",
   },
   {
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+        />
       </svg>
     ),
-    title: 'Real-time Analytics',
-    description: 'Comprehensive dashboards with custom metrics, alerts, and performance insights.',
+    title: "Advanced OCR",
+    description:
+      "State-of-the-art text recognition that works on any font, style, or background.",
   },
   {
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"
+        />
       </svg>
     ),
-    title: 'Infinite Scale',
-    description: 'Auto-scaling infrastructure that grows with your needs, from prototype to enterprise.',
+    title: "Offline Mode",
+    description:
+      "Download language packs for offline use. Translate anywhere, even without internet.",
   },
   {
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+        />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+        />
       </svg>
     ),
-    title: 'Developer First',
-    description: 'Intuitive SDKs in 10+ languages with extensive docs and interactive examples.',
+    title: "Floating Bubble",
+    description:
+      "Non-intrusive floating button stays on top of any app for instant access.",
   },
   {
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+        />
       </svg>
     ),
-    title: 'Global Infrastructure',
-    description: 'Deployed across 50+ regions with intelligent routing and automatic failover.',
+    title: "History & Export",
+    description:
+      "Save translation history for later review. Export to text files or share directly.",
   },
 ];
 
 export function FeaturesGrid() {
   return (
-    <section id="features" className="relative py-20 sm:py-24 md:py-32 px-6 bg-[var(--color-bg-secondary)]/30">
+    <section
+      id="features"
+      className="relative py-20 sm:py-24 md:py-32 px-6 bg-[var(--color-bg-secondary)]/30"
+    >
       {/* Decorative elements */}
       <div className="absolute top-20 right-1/4 w-px h-64 bg-gradient-to-b from-transparent via-[var(--color-border)] to-transparent" />
       <div className="absolute bottom-20 left-1/3 w-px h-48 bg-gradient-to-b from-transparent via-[var(--color-border)] to-transparent" />
@@ -68,15 +143,18 @@ export function FeaturesGrid() {
         {/* Section header */}
         <div className="mb-12 sm:mb-16 md:mb-20 text-center">
           <div className="inline-block px-4 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-secondary)] mb-4 sm:mb-6">
-            <span className="text-xs sm:text-sm font-mono text-[var(--color-text-secondary)] font-medium">FEATURES</span>
+            <span className="text-xs sm:text-sm font-mono text-[var(--color-text-secondary)] font-medium">
+              FEATURES
+            </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-4 sm:mb-6 text-[var(--color-text-primary)]">
-            Built for
+            Powerful
             <br />
-            <span className="gradient-text">Performance</span>
+            <span className="gradient-text">Translation Tools</span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto leading-relaxed px-4">
-            Everything you need to build, deploy, and scale AI applications in production.
+            Everything you need to break language barriers on your mobile
+            device.
           </p>
         </div>
 
@@ -108,13 +186,59 @@ export function FeaturesGrid() {
           ))}
         </div>
 
+        {/* Supported languages showcase */}
+        <div className="mt-12 sm:mt-16 md:mt-20 p-6 sm:p-8 border border-[var(--color-border)] rounded-2xl bg-[var(--color-bg-secondary)] backdrop-blur-sm">
+          <div className="text-center mb-8">
+            <h3 className="text-xl sm:text-2xl font-instrument mb-2 text-[var(--color-text-primary)]">
+              Supported Languages
+            </h3>
+            <p className="text-[var(--color-text-secondary)] text-sm">
+              Translate between 100+ languages
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            {[
+              { flag: "🇯🇵", name: "Japanese" },
+              { flag: "🇰🇷", name: "Korean" },
+              { flag: "🇨🇳", name: "Chinese" },
+              { flag: "🇺🇸", name: "English" },
+              { flag: "🇪🇸", name: "Spanish" },
+              { flag: "🇫🇷", name: "French" },
+              { flag: "🇩🇪", name: "German" },
+              { flag: "🇮🇹", name: "Italian" },
+              { flag: "🇵🇹", name: "Portuguese" },
+              { flag: "🇷🇺", name: "Russian" },
+              { flag: "🇸🇦", name: "Arabic" },
+              { flag: "🇹🇭", name: "Thai" },
+              { flag: "🇻🇳", name: "Vietnamese" },
+              { flag: "🇮🇳", name: "Hindi" },
+            ].map((lang, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[var(--color-bg-tertiary)] rounded-full border border-[var(--color-border)] hover:border-[#FF6B35]/50 transition-all"
+              >
+                <span className="text-lg sm:text-xl">{lang.flag}</span>
+                <span className="text-xs sm:text-sm text-[var(--color-text-secondary)]">
+                  {lang.name}
+                </span>
+              </div>
+            ))}
+            <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#FF6B35]/20 to-[#A78BFA]/20 rounded-full border border-[#FF6B35]/30">
+              <span className="text-sm font-medium gradient-text">
+                +86 more
+              </span>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom stats */}
-        <div className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 p-6 sm:p-8 border border-[var(--color-border)] rounded-2xl bg-[var(--color-bg-secondary)] backdrop-blur-sm">
+        <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 p-6 sm:p-8 border border-[var(--color-border)] rounded-2xl bg-[var(--color-bg-secondary)] backdrop-blur-sm">
           {[
-            { label: 'Countries', value: '150+' },
-            { label: 'Developers', value: '1M+' },
-            { label: 'Requests/Day', value: '5B+' },
-            { label: 'Avg Response', value: '87ms' },
+            { label: "Languages", value: "100+" },
+            { label: "Daily Users", value: "500K+" },
+            { label: "Translations", value: "10M+" },
+            { label: "Accuracy", value: "98%" },
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <div className="text-2xl sm:text-3xl font-instrument mb-1 gradient-text font-semibold">
