@@ -117,6 +117,15 @@
     }
   }
 
+  @keyframes fadeInQuick {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   @keyframes shimmer {
     0% {
       background-position: -1000px 0;
@@ -132,6 +141,10 @@
 
   .animate-fade-in-scale {
     animation: fadeInScale 0.6s var(--ease-smooth) forwards;
+  }
+
+  .animate-fade-in-quick {
+    animation: fadeInQuick 0.25s var(--ease-smooth) forwards;
   }
 
   /* Stagger delays */

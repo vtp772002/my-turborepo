@@ -6,16 +6,31 @@ type Phase = "idle" | "scanning" | "translated";
 
 const SCAN_DURATION = 1800;
 const FADE_DURATION = 400;
+const TRANSLATED_BADGE_DURATION = 1800;
 
 export function PhoneMockup() {
   const [phase, setPhase]               = useState<Phase>("idle");
   const [scanProgress, setScanProgress] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [fadeIn, setFadeIn]             = useState(false);
+  const [showTranslatedBadge, setShowTranslatedBadge] = useState(false);
 
   const scrollRef  = useRef<HTMLDivElement>(null);
   const rafRef     = useRef<number | null>(null);
   const timerRef   = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const translatedBadgeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const resetMockup = useCallback((behavior: ScrollBehavior = "smooth") => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    if (timerRef.current) clearTimeout(timerRef.current);
+    if (translatedBadgeTimerRef.current) clearTimeout(translatedBadgeTimerRef.current);
+    setPhase("idle");
+    setScanProgress(0);
+    setFadeIn(false);
+    setShowTranslatedBadge(false);
+    setScrollProgress(0);
+    scrollRef.current?.scrollTo({ top: 0, behavior });
+  }, []);
 
   const handleScroll = useCallback(() => {
     const el = scrollRef.current;
@@ -23,6 +38,11 @@ export function PhoneMockup() {
     const p = el.scrollTop / (el.scrollHeight - el.clientHeight);
     setScrollProgress(Math.min(1, Math.max(0, p)));
   }, []);
+
+  const isScanning   = phase === "scanning";
+  const isTranslated = phase === "translated";
+  const isActive     = phase !== "idle";
+  const showTranslated = isTranslated || fadeIn;
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -34,7 +54,25 @@ export function PhoneMockup() {
   useEffect(() => () => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
     if (timerRef.current) clearTimeout(timerRef.current);
+    if (translatedBadgeTimerRef.current) clearTimeout(translatedBadgeTimerRef.current);
   }, []);
+
+  useEffect(() => {
+    if (!isTranslated) {
+      setShowTranslatedBadge(false);
+      return;
+    }
+
+    setShowTranslatedBadge(true);
+    if (translatedBadgeTimerRef.current) clearTimeout(translatedBadgeTimerRef.current);
+    translatedBadgeTimerRef.current = setTimeout(() => {
+      setShowTranslatedBadge(false);
+    }, TRANSLATED_BADGE_DURATION);
+
+    return () => {
+      if (translatedBadgeTimerRef.current) clearTimeout(translatedBadgeTimerRef.current);
+    };
+  }, [isTranslated]);
 
   const handleTranslate = useCallback(() => {
     if (phase === "scanning") return;
@@ -45,9 +83,7 @@ export function PhoneMockup() {
       if (timerRef.current) clearTimeout(timerRef.current);
       setFadeIn(false);
       timerRef.current = setTimeout(() => {
-        setPhase("idle");
-        setScanProgress(0);
-        scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+        resetMockup("smooth");
       }, FADE_DURATION);
       return;
     }
@@ -72,18 +108,12 @@ export function PhoneMockup() {
       }
     };
     rafRef.current = requestAnimationFrame(scanFrame);
-  }, [phase]);
-
-  const isScanning   = phase === "scanning";
-  const isTranslated = phase === "translated";
-  const isActive     = phase !== "idle";
-  const showTranslated = isTranslated || fadeIn;
+  }, [phase, resetMockup]);
 
   return (
-    <div className="relative w-full max-w-[400px] aspect-[3/4]">
+    <div className="relative w-[min(84vw,320px)] h-[min(168vw,640px)] min-h-[520px] max-h-[640px] mx-auto">
       {/* Phone body */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative w-[280px] h-[560px] bg-[#111] rounded-[3rem] border-[3px] border-[#333] shadow-2xl shadow-black/60 overflow-hidden">
+      <div className="relative w-full h-full bg-[#111] rounded-[3rem] border-[3px] border-[#333] shadow-2xl shadow-black/60 overflow-hidden">
           {/* Frame reflection */}
           <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-br from-white/[0.08] to-transparent pointer-events-none z-40" />
 
@@ -196,10 +226,9 @@ export function PhoneMockup() {
               </div>
             )}
 
-            {isTranslated && (
+            {showTranslatedBadge && (
               <div
-                className="absolute top-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-sm whitespace-nowrap"
-                style={{ animation: "fadeInDown 0.3s ease-out" }}
+                className="absolute top-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-sm whitespace-nowrap animate-fade-in-quick"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
                 <span className="text-[8px] font-mono text-white tracking-wider uppercase">
@@ -249,7 +278,6 @@ export function PhoneMockup() {
               </div>
             )}
           </div>
-        </div>
       </div>
 
       {/* Floating language badges */}
@@ -266,12 +294,6 @@ export function PhoneMockup() {
         <span className="text-base">🇻🇳</span>
       </div>
 
-      <style jsx>{`
-        @keyframes fadeInDown {
-          0%   { opacity: 0; transform: translateX(-50%) translateY(-8px); }
-          100% { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-      `}</style>
     </div>
   );
 }

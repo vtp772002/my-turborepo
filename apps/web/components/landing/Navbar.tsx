@@ -1,17 +1,59 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const handleLogoClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    setMobileMenuOpen(false);
+    event.preventDefault();
+    const homeUrl = `${window.location.origin}/`;
+
+    if (window.location.href !== homeUrl) {
+      window.location.replace(homeUrl);
+      return;
+    }
+
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 8);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg-primary)]/80 backdrop-blur-xl border-b border-[var(--color-border)]">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl transition-all duration-300 ${
+        isScrolled
+          ? "bg-[var(--color-bg-primary)]/90 border-b border-[var(--color-border)] shadow-lg"
+          : "bg-[var(--color-bg-primary)]/70 border-b border-transparent"
+      }`}
+    >
       <div className="max-w-[1400px] mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
+        <div
+          className={`flex items-center justify-between transition-all duration-300 ${
+            isScrolled ? "h-14" : "h-16"
+          }`}
+        >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link
+            href="/"
+            onClick={handleLogoClick}
+            className="flex items-center gap-2 group"
+          >
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#FF6B35] to-[#A78BFA] flex items-center justify-center">
               <svg
                 className="w-5 h-5 text-white"
