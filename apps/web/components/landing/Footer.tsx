@@ -34,6 +34,12 @@ export function Footer() {
               Building the most natural screen translation experience for manga
               readers and gamers. Prototype · Android · 2026.
             </p>
+            {/* TODO: Restore original tagline when app is launched
+            <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed mb-6">
+              Breaking language barriers with real-time screen translation.
+              Translate any text on your screen instantly.
+            </p>
+            */}
             {/* Social links */}
             <div className="flex gap-4">
               {[
@@ -191,6 +197,22 @@ export function Footer() {
             </span>
           </a>
         </div>
+
+        {/* TODO: Restore App Store & Google Play download buttons when apps are published
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 py-8 border-y border-[var(--color-border)]">
+          <span className="text-[var(--color-text-secondary)] text-sm">
+            Download NLPvision:
+          </span>
+          <div className="flex gap-3">
+            <a href="#" className="flex items-center gap-2 px-4 py-2 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-lg hover:border-[var(--color-text-primary)] transition-all">
+              <span className="text-sm font-medium text-[var(--color-text-primary)]">App Store</span>
+            </a>
+            <a href="#" className="flex items-center gap-2 px-4 py-2 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-lg hover:border-[var(--color-text-primary)] transition-all">
+              <span className="text-sm font-medium text-[var(--color-text-primary)]">Google Play</span>
+            </a>
+          </div>
+        </div>
+        */}
 
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">

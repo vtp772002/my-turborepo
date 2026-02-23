@@ -91,9 +91,9 @@ export function AboutSection() {
                     toan@nlpvisions.com
                   </a>
                   <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-bg-tertiary)] border border-[var(--color-border)]">
-                    <div className="w-2 h-2 rounded-full bg-[#34D399]" />
+                    <div className="w-2 h-2 rounded-full bg-[#FBBF24]" />
                     <span className="text-xs font-mono text-[var(--color-text-tertiary)]">
-                      Google for Startups Program Applicant
+                      Prototype · Android · 2026
                     </span>
                   </div>
                 </div>

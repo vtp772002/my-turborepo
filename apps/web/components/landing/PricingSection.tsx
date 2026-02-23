@@ -1,5 +1,28 @@
 "use client";
 
+/* TODO: Restore testimonials when real user reviews are collected
+const reviews = [
+  {
+    name: "Sarah M.",
+    rating: 5,
+    text: "Finally I can play Japanese games without waiting for translations! This app is a game changer.",
+    platform: "iOS",
+  },
+  {
+    name: "Alex K.",
+    rating: 5,
+    text: "Use it daily for translating Korean webtoons. Super fast and accurate!",
+    platform: "Android",
+  },
+  {
+    name: "Maria L.",
+    rating: 5,
+    text: "Perfect for watching Chinese dramas. The real-time translation is incredible.",
+    platform: "iOS",
+  },
+];
+*/
+
 export function PricingSection() {
   return (
     <section id="download" className="relative py-20 sm:py-24 md:py-32 px-6">
@@ -79,6 +102,59 @@ export function PricingSection() {
           </div>
         </div>
 
+        {/* TODO: Restore iOS & Android download cards when apps are published on stores
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto mb-16 sm:mb-20">
+          {-- iOS Card --}
+          <div className="relative p-8 sm:p-10 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-border-light)] transition-all group overflow-hidden">
+            <div className="relative">
+              <h3 className="text-2xl sm:text-3xl font-instrument mb-2 text-[var(--color-text-primary)]">iOS</h3>
+              <p className="text-[var(--color-text-secondary)] mb-6">iPhone & iPad</p>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-sm text-[var(--color-text-secondary)]">4.8 (12K reviews)</span>
+              </div>
+              <a href="#" className="inline-flex items-center justify-center w-full py-4 bg-[#FF6B35] text-white rounded-xl font-medium">
+                Download on App Store
+              </a>
+              <p className="text-xs text-[var(--color-text-tertiary)] text-center mt-4">Requires iOS 14.0 or later</p>
+            </div>
+          </div>
+
+          {-- Android Card --}
+          <div className="relative p-8 sm:p-10 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-border-light)] transition-all group overflow-hidden">
+            <div className="relative">
+              <h3 className="text-2xl sm:text-3xl font-instrument mb-2 text-[var(--color-text-primary)]">Android</h3>
+              <p className="text-[var(--color-text-secondary)] mb-6">Phone & Tablet</p>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-sm text-[var(--color-text-secondary)]">4.7 (8K reviews)</span>
+              </div>
+              <a href="#" className="inline-flex items-center justify-center w-full py-4 bg-[#34D399] text-white rounded-xl font-medium">
+                Get it on Google Play
+              </a>
+              <p className="text-xs text-[var(--color-text-tertiary)] text-center mt-4">Requires Android 8.0 or later</p>
+            </div>
+          </div>
+        </div>
+        */}
+
+        {/* TODO: Restore reviews section when real user feedback is collected
+        <div className="mb-16 sm:mb-20">
+          <h3 className="text-2xl sm:text-3xl font-instrument mb-8 text-center text-[var(--color-text-primary)]">
+            What Users Say
+          </h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {reviews.map((review, index) => (
+              <div key={index} className="p-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-bg-secondary)]">
+                <p className="text-[var(--color-text-secondary)] mb-4 text-sm leading-relaxed">"{review.text}"</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-[var(--color-text-primary)]">{review.name}</span>
+                  <span className="text-xs text-[var(--color-text-tertiary)]">{review.platform}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        */}
+
         {/* FAQ section */}
         <div className="max-w-3xl mx-auto">
           <h3 className="text-2xl sm:text-3xl font-instrument mb-6 sm:mb-8 text-center text-[var(--color-text-primary)]">
@@ -89,14 +165,23 @@ export function PricingSection() {
               {
                 q: "Is NLPvision free to use?",
                 a: "NLPvision is currently in development. We're working on our pricing model and will share details closer to launch. Join the waitlist to stay updated.",
+                /* TODO: Restore when pricing is finalized
+                a: "Yes! NLPvision is free to download and use. We offer a premium subscription for unlimited translations and offline language packs.",
+                */
               },
               {
                 q: "Does it work offline?",
                 a: "Offline mode is on our roadmap. Our current prototype runs on-device OCR for fast recognition, with cloud-based Gemini AI for context-aware translation.",
+                /* TODO: Restore when offline mode is built
+                a: "Yes, you can download language packs for offline use. Perfect for traveling or areas with limited connectivity.",
+                */
               },
               {
                 q: "How accurate is the translation?",
                 a: "We use Gemini AI for context-aware translation — going beyond word-for-word to understand characters, tone, and story context. Accuracy improves the more you read within the same series.",
+                /* TODO: Restore when accuracy benchmarks are available
+                a: "We use state-of-the-art AI models achieving 98% accuracy. Results are continuously improved based on user feedback.",
+                */
               },
               {
                 q: "Which languages are supported?",

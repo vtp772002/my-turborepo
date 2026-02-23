@@ -81,6 +81,28 @@ const features = [
     description:
       "Powered by Gemini AI for translations that understand context, tone, and story — not just words.",
   },
+  /* TODO: Restore Offline Mode when feature is built
+  {
+    icon: (
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"
+        />
+      </svg>
+    ),
+    title: "Offline Mode",
+    description:
+      "Download language packs for offline use. Translate anywhere, even without internet.",
+  },
+  */
   {
     icon: (
       <svg
@@ -247,6 +269,26 @@ export function FeaturesGrid() {
             Join the Waitlist
           </a>
         </div>
+
+        {/* TODO: Restore real stats when app is launched
+        <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 p-6 sm:p-8 border border-[var(--color-border)] rounded-2xl bg-[var(--color-bg-secondary)] backdrop-blur-sm">
+          {[
+            { label: "Languages", value: "100+" },
+            { label: "Daily Users", value: "500K+" },
+            { label: "Translations", value: "10M+" },
+            { label: "Accuracy", value: "98%" },
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <div className="text-2xl sm:text-3xl font-instrument mb-1 gradient-text font-semibold">
+                {stat.value}
+              </div>
+              <div className="text-[10px] sm:text-xs text-[var(--color-text-secondary)] font-mono uppercase tracking-wider">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+        */}
       </div>
     </section>
   );
