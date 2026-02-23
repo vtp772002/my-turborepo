@@ -73,13 +73,13 @@ const features = [
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={1.5}
-          d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"
+          d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
         />
       </svg>
     ),
-    title: "Offline Mode",
+    title: "Context-Aware AI",
     description:
-      "Download language packs for offline use. Translate anywhere, even without internet.",
+      "Powered by Gemini AI for translations that understand context, tone, and story — not just words.",
   },
   {
     icon: (
@@ -232,23 +232,20 @@ export function FeaturesGrid() {
           </div>
         </div>
 
-        {/* Bottom stats */}
-        <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 p-6 sm:p-8 border border-[var(--color-border)] rounded-2xl bg-[var(--color-bg-secondary)] backdrop-blur-sm">
-          {[
-            { label: "Languages", value: "100+" },
-            { label: "Daily Users", value: "500K+" },
-            { label: "Translations", value: "10M+" },
-            { label: "Accuracy", value: "98%" },
-          ].map((stat, i) => (
-            <div key={i} className="text-center">
-              <div className="text-2xl sm:text-3xl font-instrument mb-1 gradient-text font-semibold">
-                {stat.value}
-              </div>
-              <div className="text-[10px] sm:text-xs text-[var(--color-text-secondary)] font-mono uppercase tracking-wider">
-                {stat.label}
-              </div>
-            </div>
-          ))}
+        {/* Early access CTA */}
+        <div className="mt-8 p-6 sm:p-8 border border-[var(--color-border)] rounded-2xl bg-[var(--color-bg-secondary)] backdrop-blur-sm text-center">
+          <p className="text-base sm:text-lg text-[var(--color-text-secondary)] mb-2">
+            Currently in active development. Prototype running on Android.
+          </p>
+          <p className="text-sm text-[var(--color-text-secondary)] mb-6">
+            Be among the first to try NLPvision when we launch.
+          </p>
+          <a
+            href="mailto:toan@nlpvisions.com?subject=NLPvision Early Access"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF6B35] text-white rounded-xl font-medium hover:bg-[#FF8C61] transition-all hover:scale-105"
+          >
+            Join the Waitlist
+          </a>
         </div>
       </div>
     </section>

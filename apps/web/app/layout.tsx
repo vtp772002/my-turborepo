@@ -22,8 +22,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'AI Platform - Advanced Intelligence Solutions',
-  description: 'Next-generation AI products for developers and enterprises',
+  title: 'NLPvision — Real-time Screen Translation for Manga & Gaming',
+  description: 'NLPvision translates manga, games, and on-screen content in real-time using Gemini AI. Built for readers and gamers who want zero-friction language translation. Early access 2026.',
 };
 
 export default function RootLayout({

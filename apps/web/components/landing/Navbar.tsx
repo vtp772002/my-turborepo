@@ -92,23 +92,23 @@ export function Navbar() {
               href="#download"
               className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors font-medium"
             >
-              Download
+              Early Access
             </Link>
             <Link
-              href="#support"
+              href="mailto:toan@nlpvisions.com"
               className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors font-medium"
             >
-              Support
+              Contact
             </Link>
           </div>
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <Link
-              href="#download"
+              href="mailto:toan@nlpvisions.com?subject=NLPvision Early Access"
               className="px-5 py-2 bg-[#FF6B35] text-white rounded-full text-sm font-medium hover:bg-[#FF8C61] transition-all hover:scale-105"
             >
-              Download Free
+              Join Waitlist
             </Link>
           </div>
 
@@ -166,22 +166,22 @@ export function Navbar() {
                 className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Download
+                Early Access
               </Link>
               <Link
-                href="#support"
+                href="mailto:toan@nlpvisions.com"
                 className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Support
+                Contact
               </Link>
               <div className="pt-4 border-t border-[var(--color-border)]">
                 <Link
-                  href="#download"
+                  href="mailto:toan@nlpvisions.com?subject=NLPvision Early Access"
                   className="block px-5 py-2 bg-[#FF6B35] text-white rounded-full text-sm font-medium text-center hover:bg-[#FF8C61] transition-all"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Download Free
+                  Join Waitlist
                 </Link>
               </div>
             </div>
