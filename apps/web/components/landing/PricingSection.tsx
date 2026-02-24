@@ -94,7 +94,7 @@ export function PricingSection() {
               <div className="flex flex-wrap items-center justify-center gap-3 mt-6 text-xs text-[var(--color-text-tertiary)]">
                 <span>Built on Android</span>
                 <span>·</span>
-                <span>Powered by Gemini AI</span>
+                <span>Powered by Advanced AI</span>
                 <span>·</span>
                 <span>Launching 2026</span>
               </div>
@@ -171,14 +171,14 @@ export function PricingSection() {
               },
               {
                 q: "Does it work offline?",
-                a: "Offline mode is on our roadmap. Our current prototype runs on-device OCR for fast recognition, with cloud-based Gemini AI for context-aware translation.",
+                a: "Offline mode is on our roadmap. Our current prototype runs on-device OCR for fast recognition, with cloud-based Advanced AI for context-aware translation.",
                 /* TODO: Restore when offline mode is built
                 a: "Yes, you can download language packs for offline use. Perfect for traveling or areas with limited connectivity.",
                 */
               },
               {
                 q: "How accurate is the translation?",
-                a: "We use Gemini AI for context-aware translation — going beyond word-for-word to understand characters, tone, and story context. Accuracy improves the more you read within the same series.",
+                a: "We use Advanced AI for context-aware translation — going beyond word-for-word to understand characters, tone, and story context. Accuracy improves the more you read within the same series.",
                 /* TODO: Restore when accuracy benchmarks are available
                 a: "We use state-of-the-art AI models achieving 98% accuracy. Results are continuously improved based on user feedback.",
                 */

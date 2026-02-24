@@ -26,7 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "NLPvision — Real-time Screen Translation for Manga & Gaming",
   description:
-    "NLPvision translates manga, games, and on-screen content in real-time using Gemini AI. Built for readers and gamers who want zero-friction language translation. Early access 2026.",
+    "NLPvision translates manga, games, and on-screen content in real-time using Advanced AI. Built for readers and gamers who want zero-friction language translation. Early access 2026.",
 };
 
 export default function RootLayout({

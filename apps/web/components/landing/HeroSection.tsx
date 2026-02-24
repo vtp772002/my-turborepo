@@ -159,7 +159,7 @@ export function HeroSection() {
               }`}
             >
               {[
-                { value: "✦", label: "Powered by Gemini AI" },
+                { value: "✦", label: "Powered by Advanced AI" },
                 { value: "✦", label: "On-device OCR" },
                 { value: "✦", label: "Android" },
               ].map((stat, i) => (

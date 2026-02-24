@@ -79,7 +79,7 @@ const features = [
     ),
     title: "Context-Aware AI",
     description:
-      "Powered by Gemini AI for translations that understand context, tone, and story — not just words.",
+      "Powered by Advanced AI for translations that understand context, tone, and story — not just words.",
   },
   /* TODO: Restore Offline Mode when feature is built
   {
