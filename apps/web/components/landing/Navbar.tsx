@@ -77,25 +77,25 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <Link
-              href="#how-it-works"
+              href="/how-it-works"
               className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors font-medium"
             >
               How It Works
             </Link>
             <Link
-              href="#features"
+              href="/features"
               className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors font-medium"
             >
               Features
             </Link>
             <Link
-              href="#about"
+              href="/about"
               className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors font-medium"
             >
               About
             </Link>
             <Link
-              href="#download"
+              href="/early-access"
               className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors font-medium"
             >
               Early Access
@@ -154,28 +154,28 @@ export function Navbar() {
           <div className="md:hidden py-4 border-t border-[var(--color-border)]">
             <div className="flex flex-col gap-4">
               <Link
-                href="#how-it-works"
+                href="/how-it-works"
                 className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 How It Works
               </Link>
               <Link
-                href="#features"
+                href="/features"
                 className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Features
               </Link>
               <Link
-                href="#about"
+                href="/about"
                 className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link
-                href="#download"
+                href="/early-access"
                 className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
