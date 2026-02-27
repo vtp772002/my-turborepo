@@ -178,7 +178,7 @@ export function ProductsSection() {
                 step: "01",
                 title: "Select Screen Area",
                 description:
-                  "Use the floating bubble to capture any part of your screen - games, apps, or videos.",
+                  "Tap the floating bubble to activate selection mode. Draw a box around any text on your screen - manga panels, game dialogue, or app content.",
                 icon: (
                   <svg
                     className="w-6 h-6"
@@ -199,7 +199,7 @@ export function ProductsSection() {
                 step: "02",
                 title: "AI Recognition",
                 description:
-                  "Advanced OCR powered by AI instantly detects and extracts text from any image or video.",
+                  "Our on-device OCR instantly recognizes text in any language. Advanced AI understands context, characters, and story flow.",
                 icon: (
                   <svg
                     className="w-6 h-6"
@@ -220,7 +220,7 @@ export function ProductsSection() {
                 step: "03",
                 title: "Instant Translation",
                 description:
-                  "Get accurate translations in your preferred language, displayed as an overlay on screen.",
+                  "Get context-aware translation powered by Gemini AI. Results appear in a clean overlay without interrupting your experience.",
                 icon: (
                   <svg
                     className="w-6 h-6"
